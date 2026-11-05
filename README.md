@@ -88,3 +88,18 @@ Embora entenda que os valores dos pesos e2 e e3 estabelecidos manualmente esteja
 
 Usei IA para gerar os prints no terminal e o plot do gráfico.
 
+## ETAPA 4
+
+### Questão 1 — Rota e custo ótimo
+
+De acordo com o código, a rota de menor custo até S7 é S0 → S1 → S4 → S7, com 47 km. A ordem de fechamento foi S0, S1, S2, S3, S5, S4, S6 e S7. Essa ordem segue os pesos calculados pelas fórmulas do RA. Na tabela manual, S4 aparece antes de S5, por causa da diferença dos pesos e2 e e3 explicada na etapa anterior.
+
+### Questão 2 — Contingência no ramal (S2, S4)
+
+Ao remover o ramal e5 = (S2, S4), a rota até S7 continua igual, porque esse ramal não faz parte do caminho escolhido pelo Dijkstra. 
+
+### Questão 3 — Prim (AGM) × Dijkstra
+
+O custo da Árvore Geradora Mínima encontrado pelo Prim foi de 74 km. A soma das distâncias mínimas do Dijkstra de S0 para todos os vértices é 189 km: 0 + 10 + 15 + 22 + 30 + 29 + 36 + 47.
+
+Essa diferença acontece porque o Dijkstra procura a menor rota de S0 para cada subestação, enquanto o Prim procura as ligações que conectam toda a rede pelo menor custo total. Por isso, juntar as rotas individuais do Dijkstra não garante a árvore geradora mínima. Esses resultados usam os pesos calculados pelas fórmulas do RA e apresentados no código.
